@@ -11,37 +11,21 @@ import {
     MDBInput
   } from "mdb-react-ui-kit";
   import { setBackgroundImage } from '../helpers/pozadina.js'
-import gradovi from '../listaGradova.json';
+  import { fetchData } from '../helpers/pozivApi.js';
 
 const PrognozaTrenutniDan = () => {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
-  const [selectedCity, setSelectedCity] = useState(['Split']); // Dodano stanje za odabrani grad
-  const [favoriteCities, setFavoriteCities] = useState([]);
   const [bgGif, setBGGif] = useState(undefined);
-  const API_KEY = 'aa6ceb23fdb262039c170ab24b33fd67';
+ // const API_KEY = 'aa6ceb23fdb262039c170ab24b33fd67';
+ const API_KEY = '895284fb2d2c50a520ea537456963d9c'
 
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=hr&appid=${API_KEY}`
-      );
-      setWeatherData(response.data);
-
-      // Podesiti pozadinu ovisno vrijednosti maina, jeli oblaka, kiša, sunce itd.
-      const main = weatherData.weather[0].main;
-      console.log("Vrijednost od main:", main);
-      setBackgroundImage(main, setBGGif);
-
-      console.log(response.data); // U console.log se može viditi cijela prognoza
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  
 
   useEffect(() => {
-    fetchData();
+    console.log("GRAD je:" + city);
+    fetchData(city, setWeatherData, setBackgroundImage, setBGGif);
   }, []);
 
   const handleInputChange = (e) => {
@@ -50,13 +34,7 @@ const PrognozaTrenutniDan = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchData();
-  };
-
-
-  const removeFavoriteCity = (cityToRemove) => {
-    const updatedFavorites = favoriteCities.filter((city) => city !== cityToRemove);
-    setFavoriteCities(updatedFavorites);
+    fetchData(city, setWeatherData, setBackgroundImage, setBGGif);
   };
 
   return (
