@@ -68,3 +68,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### API informacije
+Moj Openweathermap.org API KEY = 'aa6ceb23fdb262039c170ab24b33fd67'
+Note: 16 dnevna prognoza , kao history (povjest prognoze) nije dostupna za besplatno korisštenje pa odustajem od tih mogućnosti
