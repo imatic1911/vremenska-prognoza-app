@@ -10,6 +10,7 @@ import { setBackgroundImage } from "../helpers/pozadina.js";
 import { fetchData } from "../helpers/pozivApi.js";
 import PrognozaTrenutniDan from "./PrognozaTrenutniDan";
 import axios from 'axios';
+import odabraniGrad from "../helpers/odabraniGrad.js"
 
 const FavoritiGradova = () => {
   const [gradovi, postaviGradove] = useState(podaciGradova);
@@ -18,6 +19,10 @@ const FavoritiGradova = () => {
   const [bgGif, setBGGif] = useState(undefined);
   const [gradKojiSeSalje, setGradKojiSeSalje] = useState("");
   let city = "Zagreb"; // Zamijenite sa odgovarajućim gradom
+
+  //zustannd
+  const { setDGrad } = odabraniGrad(); // Dohvaćanje setDGrad funkcije iz zustand stanja
+
 
   useEffect(() => {
     async function fetchGradovi() {
@@ -54,9 +59,8 @@ const FavoritiGradova = () => {
     }
   };
 
-  const prenesiGrad = grad => {
-    setGradKojiSeSalje(grad);
-    console.log("Hocu prenjei");
+  const prenesiGrad = (grad) => {
+    setDGrad(grad); // Postavljanje odabraniGrad u zustand
   };
 
   return (
@@ -82,7 +86,7 @@ const FavoritiGradova = () => {
               justifyContent: "space-between"
             }}
           >
-            <MDBBtn color="dark">
+            <MDBBtn color="dark" onClick={() => prenesiGrad(grad)}>
               {grad}
             </MDBBtn>
             <MDBBtn color="danger" size="sm" onClick={() => obrisiGrad(grad)}>

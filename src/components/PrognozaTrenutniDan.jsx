@@ -9,22 +9,24 @@ import {
   } from "mdb-react-ui-kit";
   import { setBackgroundImage } from '../helpers/pozadina.js'
   import { fetchData } from '../helpers/pozivApi.js';
+  import odabraniGrad from "../helpers/odabraniGrad.js"
 
-const PrognozaTrenutniDan = ({ grad }) => {
+const PrognozaTrenutniDan = () => {
   let [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [bgGif, setBGGif] = useState(undefined);
  // const API_KEY = 'aa6ceb23fdb262039c170ab24b33fd67';
  const API_KEY = '895284fb2d2c50a520ea537456963d9c'
+ const { grad } = odabraniGrad();
 
 
-  console.log("Ovo smo prenjeli iz Favoriti:" + grad)
+  console.log("Ovo smo prenjeli iz Favoriti:" + grad);
 
   useEffect(() => {
     console.log("GRAD je:" + city);
     grad.length > 0 ? city = grad : city = ''; 
     fetchData(city, setWeatherData, setBackgroundImage, setBGGif);
-  }, []);
+  }, [grad]);
 
   const handleInputChange = (e) => {
     setCity(e.target.value);
