@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import {
     MDBCard,
-    MDBCardBody,
     MDBCardHeader,
-    MDBCol,
     MDBContainer,
     MDBRow,
     MDBBtn,
@@ -13,18 +10,19 @@ import {
   import { setBackgroundImage } from '../helpers/pozadina.js'
   import { fetchData } from '../helpers/pozivApi.js';
 
-const PrognozaTrenutniDan = () => {
-  const [city, setCity] = useState('');
+const PrognozaTrenutniDan = ({ grad }) => {
+  let [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [bgGif, setBGGif] = useState(undefined);
  // const API_KEY = 'aa6ceb23fdb262039c170ab24b33fd67';
  const API_KEY = '895284fb2d2c50a520ea537456963d9c'
 
 
-  
+  console.log("Ovo smo prenjeli iz Favoriti:" + grad)
 
   useEffect(() => {
     console.log("GRAD je:" + city);
+    grad.length > 0 ? city = grad : city = ''; 
     fetchData(city, setWeatherData, setBackgroundImage, setBGGif);
   }, []);
 
