@@ -1,3 +1,4 @@
+// Ovo je API za ucitavanje i mnupalcija gradova untar file server/gradovi.json
 const express = require('express');
 const fs = require('fs');
 const path = require('path');

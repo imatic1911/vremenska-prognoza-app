@@ -1,17 +1,20 @@
-# Getting Started with Create React App
+# Vremenska prognoza React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ova je aplikacija koja dobiva trenutne informacije za upisani grad, a sadrži i dio gdje imao favorizirane gradove koje možemo dodavti i brisati .
+Mehanizam favoriziranih gradova (učitavanje, dodavanje i brisanje ) radi pomoću node express paketa.
 
-## Available Scripts
+## Pokretanje aplikacije
 
-In the project directory, you can run:
+Preduvijet node je verzija 18.16.1 , IDE koji je korišten je VSCode.
 
-### `npm start`
+mislim da bi trebalo radi i na drugim verzijama starijim od 16  opa na više ali nije testirano
+Pozocijonirati se u root projekta u terminalu i onda pokrenuti `npm install` i nakon toga `npm start` . Aplikacija je onda dostupna na `http://localhost:3000/`
+### Prije pokretnaja odraditi `npm install` onda pokrenuti `npm start` 
 
 
 ### API informacije
 Moj Openweathermap.org API KEY = 'aa6ceb23fdb262039c170ab24b33fd67'
-Note: 16 dnevna prognoza , kao history (povjest prognoze) nije dostupna za besplatno korisštenje pa odustajem od tih mogućnosti
+Note: 16 dnevna prognoza i satna, kao history (povjest prognoze) nije dostupna za besplatno korištenje pa odustajem od tih mogućnosti
 
 # Node verzija 18.16.1
 
@@ -29,5 +32,9 @@ scripts dio u package.json to je omogućeno preko paketa: concurrently
 ### Stilizacija
 
 Za stilizaciju smo koristili komponete iz MDB React ui (mdb-react-ui-kit)
+
+### Upravljanjem stanjem (managment state)
+
+Za upravljanjem stanja korišten paket `zustand` koji se instalira "npm install zustand" dokumentacija: https://github.com/pmndrs/zustand
 
 

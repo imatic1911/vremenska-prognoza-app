@@ -6,8 +6,6 @@ import {
 } from "mdb-react-ui-kit";
 
 import podaciGradova from "../server/gradovi.json";
-import { setBackgroundImage } from "../helpers/pozadina.js";
-import { fetchData } from "../helpers/pozivApi.js";
 import PrognozaTrenutniDan from "./PrognozaTrenutniDan";
 import axios from 'axios';
 import odabraniGrad from "../helpers/odabraniGrad.js"
@@ -15,10 +13,7 @@ import odabraniGrad from "../helpers/odabraniGrad.js"
 const FavoritiGradova = () => {
   const [gradovi, postaviGradove] = useState(podaciGradova);
   const [noviGrad, postaviNoviGrad] = useState("");
-  const [weatherData, setWeatherData] = useState(null); // Primer stanja za vremenske podatke
-  const [bgGif, setBGGif] = useState(undefined);
   const [gradKojiSeSalje, setGradKojiSeSalje] = useState("");
-  let city = "Zagreb"; // Zamijenite sa odgovarajućim gradom
 
   //zustannd
   const { setDGrad } = odabraniGrad(); // Dohvaćanje setDGrad funkcije iz zustand stanja
@@ -67,15 +62,18 @@ const FavoritiGradova = () => {
     <div>
      <div id="favoriti" style={{border: '1px solid', marginBottom: '2%', marginLeft: '22%' , marginRight: '22%'}}>
       <MDBInput
+        style={{margin: '1em 1em 1em 1em'}}
         type="text"
         value={noviGrad}
         onChange={e => postaviNoviGrad(e.target.value)}
-        placeholder="Unesite novi grad"
+        label='Unesite novi favorizirani grad'
+        placeholder="Unesite novi favorizirani grad"
       />
       <MDBBtn onClick={dodajGrad} color="success">Dodaj Grad</MDBBtn>
       <br />
       <br />
       <div id="odabraniFavoriti" style={{marginBottom: '2%', marginLeft: '22%'}}>
+      <div className="badge bg-primary text-wrap text-uppercase"  style={{width: "15rem"}}>Favoriti:</div><br />
       <MDBBtnGroup aria-label="Grad buttons">
         {gradovi.map((grad, index) =>
           <div
@@ -97,7 +95,7 @@ const FavoritiGradova = () => {
       </MDBBtnGroup>
       </div>
       </div>
-      <PrognozaTrenutniDan grad={gradKojiSeSalje} />
+      <PrognozaTrenutniDan />
     </div>
   );
 };

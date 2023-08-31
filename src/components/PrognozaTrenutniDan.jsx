@@ -15,8 +15,6 @@ const PrognozaTrenutniDan = () => {
   let [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [bgGif, setBGGif] = useState(undefined);
- // const API_KEY = 'aa6ceb23fdb262039c170ab24b33fd67';
- const API_KEY = '895284fb2d2c50a520ea537456963d9c'
  const { grad } = odabraniGrad();
 
 
@@ -43,7 +41,8 @@ const PrognozaTrenutniDan = () => {
       <form onSubmit={handleSubmit}>
         <MDBInput
           type="text"
-          placeholder="Unesite grad koji zelite"
+          placeholder="Unesite grad koji zelite za prognozu"
+          label='Unesite grad koji zelite za prognozu'
           value={city}
           onChange={handleInputChange}
         />
